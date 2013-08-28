@@ -1,4 +1,3 @@
-
 // Kris Zyp
 // Updates/added features by ...Max... (Max Motovilov)
 
@@ -198,6 +197,12 @@ function Deferred(canceller){
       }
     }
   }
+  
+  // let user find out if promise is already resolved or rejected
+  this.isFinished = function() { return finished || isError; }
+  this.isResolved = function() { return finished; }
+  this.isRejected = function() { return isError; }
+  
   // calling resolve will resolve the promise
   this.resolve = this.callback = this.emitSuccess = function(value){
     notifyAll(value);
